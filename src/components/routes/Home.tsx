@@ -12,6 +12,7 @@ const Home = () => {
 
     useEffect(() => {
         if (query === null || query.length === 0) {
+            resetShows();
             return;
         }
 
