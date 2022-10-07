@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./components/routes/Home";
 import Show from "./components/routes/Show";
+import Toast from "./components/shared/toast";
 import { GlobalContext } from "./hooks/useGlobalContext";
 import { useTvMaze } from "./hooks/useTvMaze";
 
@@ -12,6 +13,7 @@ const App = () => {
         setSelectedShow,
         resetShows,
         findShowById,
+        error,
     } = useTvMaze();
 
     return (
@@ -33,6 +35,7 @@ const App = () => {
                         <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
                 </BrowserRouter>
+                <Toast message={error} type="error" />
             </GlobalContext.Provider>
         </div>
     );

@@ -29,6 +29,12 @@ export const useTvMaze = () => {
         setError(null);
         setIsLoading(true);
 
+        if (query === "error") {
+            setError("This is a dummy error message");
+            setIsLoading(false);
+            return;
+        }
+
         try {
             const result = await fetch(`${URL}/search/shows?q=${query}`);
             const json = (await result.json()) as TVMazeSearchResult[];
