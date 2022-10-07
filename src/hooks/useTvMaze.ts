@@ -9,7 +9,7 @@ export const useTvMaze = () => {
     const [shows, setShows] = useState<Show[]>([]);
     const [selectedShow, setSelectedShow] = useState<Show | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [error, setError] = useState<string | null>("");
+    const [error, setError] = useState<string | null>(null);
 
     const findShowById = async (id: number) => {
         if (!id) return;
@@ -72,6 +72,10 @@ export const useTvMaze = () => {
         setShows([]);
     };
 
+    const clearError = () => {
+        setError(null);
+    };
+
     return {
         error,
         isLoading,
@@ -81,5 +85,6 @@ export const useTvMaze = () => {
         shows,
         resetShows,
         findShowById,
+        clearError,
     };
 };
