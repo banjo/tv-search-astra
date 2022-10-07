@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createRef } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
 import { useNavigate } from "react-router-dom";
 import { Show } from "../../types/types";
 import { useTvMazeContext } from "../../hooks/useGlobalContext";
+import Card from "../shared/card";
 
 const Home = () => {
     const [query, setQuery] = useState<string>("");
     const { search, setSelectedShow, shows, resetShows } = useTvMazeContext();
     const { debounce } = useDebounce(query, 500);
     const navigate = useNavigate();
+    const [selectedIndex, setSelectedIndex] = useState<number>(0);
+    const refs = shows.map(() => createRef<HTMLDivElement>());
 
     useEffect(() => {
         if (debounce === null || debounce.length === 0) {
@@ -29,20 +32,52 @@ const Home = () => {
         navigate(`/show/${show.id}`);
     };
 
+    const handleKeyboardNavigation = (e: React.KeyboardEvent) => {
+        let newValue = 0;
+
+        if (e.key === "ArrowUp") {
+            newValue = (selectedIndex - 1 + shows.length) % shows.length;
+            setSelectedIndex(newValue);
+        }
+
+        if (e.key === "ArrowDown") {
+            newValue = selectedIndex + (1 % shows.length);
+            setSelectedIndex(newValue);
+        }
+
+        const ref = refs[newValue];
+        ref?.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+
+        if (e.key === "Enter") {
+            handleClick(shows[selectedIndex]);
+        }
+    };
+
     return (
-        <div className="">
+        <div className="search-container">
+            <h1 className="title">TV Series</h1>
             <input
                 type="text"
-                className="my-5"
+                id="search-input"
                 value={query}
+                placeholder="Friends..."
                 onChange={(e) => setQuery(e.target.value)}
+                onKeyUp={handleKeyboardNavigation}
             />
 
-            {shows?.map((show) => (
-                <button onClick={() => handleClick(show)} key={show.id}>
-                    {show.name}
-                </button>
-            ))}
+            <div className="results">
+                {shows?.map((show, index) => {
+                    return (
+                        <Card
+                            refName={refs[index]}
+                            show={show}
+                            key={show.id}
+                            selected={selectedIndex === index}
+                            onClick={handleClick}
+                        />
+                    );
+                })}
+            </div>
         </div>
     );
 };

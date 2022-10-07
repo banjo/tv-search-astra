@@ -14,10 +14,11 @@ const App = () => {
         resetShows,
         findShowById,
         error,
+        clearError,
     } = useTvMaze();
 
     return (
-        <div className="App">
+        <div className="app">
             <GlobalContext.Provider
                 value={{
                     search,
@@ -26,6 +27,7 @@ const App = () => {
                     setSelectedShow,
                     resetShows,
                     findShowById,
+                    clearError,
                 }}
             >
                 <BrowserRouter>
