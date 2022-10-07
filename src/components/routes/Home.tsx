@@ -11,7 +11,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (query === null || query.length === 0) {
+        if (debounce === null || debounce.length === 0) {
             resetShows();
             return;
         }
@@ -20,7 +20,7 @@ const Home = () => {
             await search(query);
         };
 
-        fetchData(query);
+        fetchData(debounce);
     }, [debounce]);
 
     const handleClick = async (show: Show) => {
