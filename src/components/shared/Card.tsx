@@ -3,9 +3,9 @@ import { Show } from "../../types/types";
 import FavoriteButton from "./FavoriteButton";
 interface CardProps {
     show: Show;
-    selected: boolean;
-    onClick: (show: Show) => Promise<void>;
-    refName: any;
+    selected?: boolean;
+    onClick: (show: Show) => void;
+    refName?: any;
 }
 
 const Card = ({ show, onClick, selected = false, refName }: CardProps) => {

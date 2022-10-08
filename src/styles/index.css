@@ -58,7 +58,8 @@
     margin: 0 auto;
 }
 
-.search-container > .title {
+.search-container > .title,
+.favorites-container > .title {
     font-size: 64px;
     font-weight: 700;
     color: var(--clr-white);
@@ -80,7 +81,7 @@
     box-shadow: var(--box-shadow);
 }
 
-.search-container > .results {
+.results {
     display: flex;
     flex-direction: column;
     align-items: center;

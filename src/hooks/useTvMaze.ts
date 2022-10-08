@@ -11,6 +11,7 @@ export const useTvMaze = () => {
     const [selectedShow, setSelectedShow] = useState<Show | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<IError | null>(null);
+    const [favoriteShows, setFavoriteShows] = useState<Show[]>([]);
 
     const findShowById = async (id: number) => {
         if (!id) return;
@@ -34,6 +35,48 @@ export const useTvMaze = () => {
             }
         }
 
+        setIsLoading(false);
+    };
+
+    const findFavorites = async (ids: number[]) => {
+        if (!ids.length) return;
+
+        setIsLoading(true);
+        const idsToFetch: number[] = [];
+        const fetchedShows: Show[] = [];
+
+        ids.forEach((id) => {
+            const cache = idCache.current[id];
+            if (cache) {
+                fetchedShows.push(cache);
+            } else {
+                idsToFetch.push(id);
+            }
+
+            return null;
+        });
+
+        if (idsToFetch.length) {
+            try {
+                const res: Show[] = await Promise.all(
+                    idsToFetch.map((id) =>
+                        fetch(`${URL}/shows/${id}`).then((res) => res.json())
+                    )
+                );
+
+                res.forEach((show: Show) => {
+                    idCache.current[show.id] = show;
+                    fetchedShows.push(show);
+                });
+            } catch (error) {
+                if (typeof error === "string") {
+                    setError({ message: error, type: "error" });
+                } else if (error instanceof Error) {
+                    setError({ message: error.message, type: "error" });
+                }
+            }
+        }
+        setFavoriteShows(fetchedShows);
         setIsLoading(false);
     };
 
@@ -91,5 +134,7 @@ export const useTvMaze = () => {
         findShowById,
         clearError,
         setError,
+        findFavorites,
+        favoriteShows,
     };
 };

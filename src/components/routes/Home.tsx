@@ -1,6 +1,6 @@
 import { useEffect, useState, createRef } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Show } from "../../types/types";
 import { useTvMazeContext } from "../../hooks/useGlobalContext";
 import Card from "../shared/Card";
@@ -42,7 +42,7 @@ const Home = () => {
     const handleClick = async (show: Show) => {
         setSelectedShow(show);
         resetShows();
-        navigate(`/show/${show.id}?query=${query}`);
+        navigate(`/show/${show.id}?query=${query}&from=home`);
     };
 
     const handleKeyboardNavigation = (e: React.KeyboardEvent) => {
@@ -75,6 +75,11 @@ const Home = () => {
     return (
         <div className="search-container">
             <h1 className="title">TV Series</h1>
+
+            <Link className="btn favorite-link" to="/favorites">
+                Favorites
+            </Link>
+
             <input
                 type="text"
                 id="search-input"

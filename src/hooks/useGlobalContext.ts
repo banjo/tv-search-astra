@@ -13,6 +13,8 @@ export interface GlobalContextInterface {
     favorites: number[];
     addFavorite: (favorite: number) => void;
     removeFavorite: (favorite: number) => void;
+    findFavorites: (ids: number[]) => Promise<void>;
+    favoriteShows: Show[];
 }
 
 const GlobalContext = React.createContext<GlobalContextInterface>({
@@ -27,6 +29,8 @@ const GlobalContext = React.createContext<GlobalContextInterface>({
     favorites: [],
     addFavorite: () => 0,
     removeFavorite: () => 0,
+    findFavorites: () => Promise.resolve(),
+    favoriteShows: [],
 });
 
 const useTvMazeContext = () => useContext(GlobalContext);

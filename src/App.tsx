@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Favorites from "./components/routes/Favorites";
 import Home from "./components/routes/Home";
 import Show from "./components/routes/Show";
 import Toast from "./components/shared/Toast";
@@ -20,6 +21,8 @@ const App = () => {
         clearError,
         setError,
         isLoading,
+        findFavorites,
+        favoriteShows
     } = useTvMaze();
 
     const { addFavorite, removeFavorite, favorites } = useFavorites();
@@ -52,12 +55,15 @@ const App = () => {
                     favorites,
                     removeFavorite,
                     addFavorite,
+                    findFavorites,
+                    favoriteShows,
                 }}
             >
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/show/:id" element={<Show />} />
+                        <Route path="/favorites" element={<Favorites />} />
                         <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
                 </BrowserRouter>

@@ -29,6 +29,12 @@ const Show = () => {
 
     const goBackLink = () => {
         const query = searchParams.get("query");
+        const from = searchParams.get("from");
+
+        if (from === "favorites") {
+            return "/favorites";
+        }
+
         if (query) return `/?query=${query}`;
 
         return "/";
