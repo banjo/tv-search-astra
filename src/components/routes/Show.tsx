@@ -4,12 +4,14 @@ import { cleanString, isNumber } from "../../helpers/util";
 import { useTvMazeContext } from "../../hooks/useGlobalContext";
 import { BsStarFill } from "react-icons/bs";
 import { FaImdb } from "react-icons/fa";
+import { useSearchParams } from "react-router-dom";
 
 const Show = () => {
     const { selectedShow, findShowById } = useTvMazeContext();
     const { id } = useParams();
     const navigate = useNavigate();
     const [activateFadeIn, setActivateFadeIn] = useState<boolean>(false);
+    const [searchParams] = useSearchParams();
 
     useEffect(() => {
         if (!isNumber(Number(id))) {
@@ -24,6 +26,13 @@ const Show = () => {
         }
     }, [selectedShow, id]);
 
+    const goBackLink = () => {
+        const query = searchParams.get("query");
+        if (query) return `/?query=${query}`;
+
+        return "/";
+    };
+
     useEffect(() => {
         setTimeout(() => setActivateFadeIn(true), 100);
     }, []);
@@ -34,7 +43,7 @@ const Show = () => {
 
     return (
         <div className={`show-container ${activateFadeIn ? "" : "hide"}`}>
-            <Link className="btn" to="/">
+            <Link className="btn" to={goBackLink()}>
                 Back
             </Link>
             <div className="show-view">

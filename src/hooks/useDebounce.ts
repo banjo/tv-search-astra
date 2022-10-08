@@ -11,5 +11,9 @@ export const useDebounce = (value: string, delay: number) => {
         return () => clearTimeout(timeout);
     }, [value, delay]);
 
-    return { debounce };
+    const setDirectly = (value: string) => {
+        setDebounce(value);
+    };
+
+    return { debounce, setDirectly };
 };
