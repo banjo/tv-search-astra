@@ -43,7 +43,7 @@ const Home = () => {
 
         if (e.key === "ArrowDown" || e.key === "Tab") {
             e.preventDefault();
-            newValue = selectedIndex + (1 % shows.length);
+            newValue = (selectedIndex + 1) % shows.length;
             setSelectedIndex(newValue);
         }
 
