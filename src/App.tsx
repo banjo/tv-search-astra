@@ -25,8 +25,6 @@ const App = () => {
     });
 
     useEffect(() => {
-        console.log(result);
-        console.log(speed);
         if (result === "slow") {
             setError({
                 message: "You seem to have a slow internet connection",
