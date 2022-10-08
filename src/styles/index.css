@@ -92,6 +92,11 @@
     object-fit: cover;
 }
 
+.card .year {
+    font-weight: 300;
+    color: rgba(35, 35, 35, 0.555);
+}
+
 .card-content {
     position: relative;
     padding: 16px;

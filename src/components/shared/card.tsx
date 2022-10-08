@@ -24,7 +24,10 @@ const Card = ({ show, onClick, selected = false, refName }: CardProps) => {
                 <div className="missing-image">No image :(</div>
             )}
             <div className="card-content">
-                <h3 className="title">{show.name}</h3>
+                <h3 className="title">
+                    {show.name}{" "}
+                    <span className="year">({show.premiered.slice(0, 4)})</span>
+                </h3>
                 <div className="summary">
                     <div
                         dangerouslySetInnerHTML={{
