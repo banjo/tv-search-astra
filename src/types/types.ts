@@ -1,3 +1,7 @@
+export interface Error {
+    message: string | null | undefined;
+    type: "error" | "warning" | undefined;
+}
 export interface Show {
     id: number;
     url: string;

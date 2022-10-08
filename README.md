@@ -24,3 +24,4 @@ npm run preview
 - Keyboard navigation once the result has been presented
 - Request caching, which will save and re-use repeated requests
 - Error toast with animations (search for "error" to trigger an example)
+- Warning toast with animation for slow internet connection

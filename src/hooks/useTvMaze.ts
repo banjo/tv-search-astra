@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { Show, TVMazeSearchResult } from "../types/types";
+import { Error as IError } from "../types/types";
 
 const URL = "http://api.tvmaze.com";
 
@@ -9,7 +10,7 @@ export const useTvMaze = () => {
     const [shows, setShows] = useState<Show[]>([]);
     const [selectedShow, setSelectedShow] = useState<Show | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [error, setError] = useState<string | null>(null);
+    const [error, setError] = useState<IError | null>(null);
 
     const findShowById = async (id: number) => {
         if (!id) return;
@@ -26,9 +27,9 @@ export const useTvMaze = () => {
                 setSelectedShow(data);
             } catch (error) {
                 if (typeof error === "string") {
-                    setError(error);
+                    setError({ message: error, type: "error" });
                 } else if (error instanceof Error) {
-                    setError(error.message);
+                    setError({ message: error.message, type: "error" });
                 }
             }
         }
@@ -40,7 +41,10 @@ export const useTvMaze = () => {
         if (!query) return;
 
         if (query === "error") {
-            setError("This is a dummy error message");
+            setError({
+                message: "This is a dummy error message",
+                type: "error",
+            });
             return;
         }
 
@@ -58,9 +62,9 @@ export const useTvMaze = () => {
                 queryCache.current[query] = shows;
             } catch (error: unknown) {
                 if (typeof error === "string") {
-                    setError(error);
+                    setError({ message: error, type: "error" });
                 } else if (error instanceof Error) {
-                    setError(error.message);
+                    setError({ message: error.message, type: "error" });
                 }
             }
         }
@@ -86,5 +90,6 @@ export const useTvMaze = () => {
         resetShows,
         findShowById,
         clearError,
+        setError,
     };
 };

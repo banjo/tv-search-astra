@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./components/routes/Home";
 import Show from "./components/routes/Show";
 import Toast from "./components/shared/toast";
 import { GlobalContext } from "./hooks/useGlobalContext";
+import { useInternetSpeedTest } from "./hooks/useInternetSpeedTest";
 import { useTvMaze } from "./hooks/useTvMaze";
 
 const App = () => {
@@ -15,7 +17,23 @@ const App = () => {
         findShowById,
         error,
         clearError,
+        setError,
     } = useTvMaze();
+
+    const { url, handleLoad, result, speed } = useInternetSpeedTest({
+        threshold: 1000,
+    });
+
+    useEffect(() => {
+        console.log(result);
+        console.log(speed);
+        if (result === "slow") {
+            setError({
+                message: "You seem to have a slow internet connection",
+                type: "warning",
+            });
+        }
+    }, [result]);
 
     return (
         <div className="app">
@@ -37,8 +55,9 @@ const App = () => {
                         <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
                 </BrowserRouter>
-                <Toast message={error} type="error" />
+                <Toast message={error?.message} type={error?.type} />
             </GlobalContext.Provider>
+            <img src={url} alt="" className="hidden" onLoad={handleLoad} />
         </div>
     );
 };

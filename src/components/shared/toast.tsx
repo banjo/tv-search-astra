@@ -1,14 +1,9 @@
 import { useEffect, useState } from "react";
 import { useTvMazeContext } from "../../hooks/useGlobalContext";
-
-interface ToastProps {
-    message: string | null;
-    type: "error";
-}
-
+import { Error as IError } from "../../types/types";
 const TIMEOUT = 5000;
 
-const Toast = ({ message, type }: ToastProps) => {
+const Toast = ({ message, type }: IError) => {
     const [showToast, setShowToast] = useState<boolean>(false);
     const { clearError } = useTvMazeContext();
 
@@ -32,7 +27,7 @@ const Toast = ({ message, type }: ToastProps) => {
             ${type}
             ${showToast ? "" : "hidden-toast"}`}
         >
-            <div className="title">Error</div>
+            <div className="title">{type?.toUpperCase()}</div>
             <div className="message">{message}</div>
             <div className="close" onClick={close}>
                 X

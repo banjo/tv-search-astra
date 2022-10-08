@@ -59,6 +59,10 @@
     gap: 32px;
 }
 
+.hidden {
+    display: none;
+}
+
 /* CARD  */
 .card {
     color: #fff;
@@ -165,6 +169,11 @@
 .error {
     background-color: #f8d7d9;
     color: #721c24;
+}
+
+.warning {
+    background-color: #fff3cd;
+    color: #856404;
 }
 
 .hidden-toast {
