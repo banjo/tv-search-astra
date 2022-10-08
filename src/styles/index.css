@@ -20,6 +20,7 @@
 }
 
 /* SHARED  */
+
 .btn {
     display: inline-block;
     padding: 0.5rem 1rem;
@@ -220,17 +221,38 @@
 
 .show-view > .main .info {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 64px;
     margin-bottom: 16px;
 }
 
+.show-view > .main .links {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.show-view > .main .links a {
+    color: var(--clr-primary);
+}
+
 .show-view > .main .info .rating {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 8px;
     font-size: 1.4rem;
 }
+
+.show-view > .main .info .rating-star {
+    color: #f6c92a;
+    font-size: 1.5rem;
+    position: relative;
+    bottom: 4px;
+    margin-right: 8px;
+}
+
 .show-view > .main .info .rating span {
     color: rgb(143, 139, 139);
     font-weight: 300;
