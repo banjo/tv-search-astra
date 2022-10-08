@@ -230,8 +230,9 @@
 .show-view > .main .info {
     display: flex;
     align-items: center;
-    gap: 64px;
+    gap: 32px;
     margin-bottom: 16px;
+    flex-wrap: wrap;
 }
 
 .show-view > .main .links {
