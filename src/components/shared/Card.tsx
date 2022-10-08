@@ -1,5 +1,6 @@
 import { cleanString } from "../../helpers/util";
 import { Show } from "../../types/types";
+import FavoriteButton from "./FavoriteButton";
 interface CardProps {
     show: Show;
     selected: boolean;
@@ -34,12 +35,16 @@ const Card = ({ show, onClick, selected = false, refName }: CardProps) => {
                     ></div>
                 </div>
 
-                <div className="genres">
-                    {show.genres.map((genre) => (
-                        <span className="genre" key={genre}>
-                            {genre}
-                        </span>
-                    ))}
+                <div className="bottom">
+                    <div className="genres">
+                        {show.genres.map((genre) => (
+                            <span className="genre" key={genre}>
+                                {genre}
+                            </span>
+                        ))}
+                    </div>
+
+                    <FavoriteButton showId={show.id} />
                 </div>
             </div>
         </div>

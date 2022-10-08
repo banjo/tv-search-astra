@@ -3,7 +3,7 @@ import { useDebounce } from "../../hooks/useDebounce";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Show } from "../../types/types";
 import { useTvMazeContext } from "../../hooks/useGlobalContext";
-import Card from "../shared/card";
+import Card from "../shared/Card";
 import Loading from "../shared/Loading";
 
 const Home = () => {

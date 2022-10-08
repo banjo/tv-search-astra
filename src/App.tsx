@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./components/routes/Home";
 import Show from "./components/routes/Show";
-import Toast from "./components/shared/toast";
+import Toast from "./components/shared/Toast";
+import useFavorites from "./hooks/useFavorites";
 import { GlobalContext } from "./hooks/useGlobalContext";
 import { useInternetSpeedTest } from "./hooks/useInternetSpeedTest";
 import { useTvMaze } from "./hooks/useTvMaze";
@@ -18,8 +19,10 @@ const App = () => {
         error,
         clearError,
         setError,
-        isLoading
+        isLoading,
     } = useTvMaze();
+
+    const { addFavorite, removeFavorite, favorites } = useFavorites();
 
     const { url, handleLoad, result } = useInternetSpeedTest({
         threshold: 1000,
@@ -45,7 +48,10 @@ const App = () => {
                     resetShows,
                     findShowById,
                     clearError,
-                    isLoading
+                    isLoading,
+                    favorites,
+                    removeFavorite,
+                    addFavorite,
                 }}
             >
                 <BrowserRouter>

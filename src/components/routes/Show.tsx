@@ -5,6 +5,7 @@ import { useTvMazeContext } from "../../hooks/useGlobalContext";
 import { BsStarFill } from "react-icons/bs";
 import { FaImdb } from "react-icons/fa";
 import { useSearchParams } from "react-router-dom";
+import FavoriteButton from "../shared/FavoriteButton";
 
 const Show = () => {
     const { selectedShow, findShowById } = useTvMazeContext();
@@ -48,7 +49,10 @@ const Show = () => {
             </Link>
             <div className="show-view">
                 <div className="side">
-                    <div className="title">{selectedShow.name}</div>
+                    <div className="top">
+                        <div className="title">{selectedShow.name}</div>
+                        <FavoriteButton showId={selectedShow.id} />
+                    </div>
                     <div className="info">
                         <div>
                             {selectedShow.premiered?.slice(0, 4) ??

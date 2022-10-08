@@ -10,6 +10,9 @@ export interface GlobalContextInterface {
     findShowById: (id: number) => Promise<void>;
     clearError: () => void;
     isLoading: boolean;
+    favorites: number[];
+    addFavorite: (favorite: number) => void;
+    removeFavorite: (favorite: number) => void;
 }
 
 const GlobalContext = React.createContext<GlobalContextInterface>({
@@ -21,6 +24,9 @@ const GlobalContext = React.createContext<GlobalContextInterface>({
     findShowById: () => Promise.resolve(),
     clearError: () => 0,
     isLoading: false,
+    favorites: [],
+    addFavorite: () => 0,
+    removeFavorite: () => 0,
 });
 
 const useTvMazeContext = () => useContext(GlobalContext);
