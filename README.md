@@ -4,17 +4,19 @@ This is the home assignment for AstraZeneca.
 
 ## Run
 
+This application is built with `pnpm`, but should have no problems running with `npm` either.
+
 ```bash
 
 # install
-npm install
+pnpm install
 
 # run dev locally
-npm run dev
+pnpm run dev
 
 # preview prod locally
-npm run build
-npm run preview
+pnpm run build
+pnpm run preview
 
 ```
 
@@ -30,3 +32,13 @@ npm run preview
 - Loading animation when searching.
 - Tv show information page with a fade-in animation.
 - Page navigation with React Router which allows for shareable links.
+- Add / remove favorites from card and show page
+- Page for favorites
+
+## What I would do if I had more time
+
+- Refactor the code to be more modular, with more features added in the end I found myself not having enough time to spend on that and just focused on functionality.
+- Tests. A lot of tests could've been added, due to the limited time I choose to spend my time on functionality and design instead of tests. Even though both components, helpers and hooks should've been tested.
+- Create a separate hook/state for error instead of including it in the useTvMaze hook as it is more global than that.
+- Re-work the state system. The current one works, but it scales quite messy. If I had time I would probably re-work it to use useReducer or Redux or some other neat framework.
+- Re-write the application to Svelte ;)
