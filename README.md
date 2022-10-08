@@ -25,3 +25,4 @@ npm run preview
 - Request caching, which will save and re-use repeated requests
 - Error toast with animations (search for "error" to trigger an example)
 - Warning toast with animation for slow internet connection
+  - Threshold is set arbitrarily for 1000ms to load a specific image, I could trigger it myself by setting throttle to "regular 3g" in the dev tools.

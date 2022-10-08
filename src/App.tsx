@@ -20,7 +20,7 @@ const App = () => {
         setError,
     } = useTvMaze();
 
-    const { url, handleLoad, result, speed } = useInternetSpeedTest({
+    const { url, handleLoad, result } = useInternetSpeedTest({
         threshold: 1000,
     });
 
