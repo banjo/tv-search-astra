@@ -182,6 +182,14 @@
     max-width: 1200px;
     margin: 0 auto;
     font-size: 1.25rem;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.show-container.hide {
+    opacity: 0;
+    transform: translateY(100px);
 }
 
 .show-view {

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { cleanString, isNumber } from "../../helpers/util";
 import { useTvMazeContext } from "../../hooks/useGlobalContext";
@@ -9,6 +9,7 @@ const Show = () => {
     const { selectedShow, findShowById } = useTvMazeContext();
     const { id } = useParams();
     const navigate = useNavigate();
+    const [activateFadeIn, setActivateFadeIn] = useState<boolean>(false);
 
     useEffect(() => {
         if (!isNumber(Number(id))) {
@@ -23,12 +24,16 @@ const Show = () => {
         }
     }, [selectedShow, id]);
 
+    useEffect(() => {
+        setTimeout(() => setActivateFadeIn(true), 100);
+    }, []);
+
     if (!selectedShow) {
         return null;
     }
 
     return (
-        <div className="show-container">
+        <div className={`show-container ${activateFadeIn ? "" : "hide"}`}>
             <Link className="btn" to="/">
                 Back
             </Link>
@@ -47,7 +52,9 @@ const Show = () => {
                         )}
                     </div>
 
-                    <img src={selectedShow.image.original} alt="" />
+                    {selectedShow.image && (
+                        <img src={selectedShow.image.original} alt="" />
+                    )}
                 </div>
                 <div className="main">
                     <div className="info">
