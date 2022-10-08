@@ -18,6 +18,7 @@ const App = () => {
         error,
         clearError,
         setError,
+        isLoading
     } = useTvMaze();
 
     const { url, handleLoad, result } = useInternetSpeedTest({
@@ -44,6 +45,7 @@ const App = () => {
                     resetShows,
                     findShowById,
                     clearError,
+                    isLoading
                 }}
             >
                 <BrowserRouter>

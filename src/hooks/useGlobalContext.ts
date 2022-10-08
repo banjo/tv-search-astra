@@ -9,6 +9,7 @@ export interface GlobalContextInterface {
     resetShows: () => void;
     findShowById: (id: number) => Promise<void>;
     clearError: () => void;
+    isLoading: boolean;
 }
 
 const GlobalContext = React.createContext<GlobalContextInterface>({
@@ -19,6 +20,7 @@ const GlobalContext = React.createContext<GlobalContextInterface>({
     resetShows: () => 0,
     findShowById: () => Promise.resolve(),
     clearError: () => 0,
+    isLoading: false,
 });
 
 const useTvMazeContext = () => useContext(GlobalContext);

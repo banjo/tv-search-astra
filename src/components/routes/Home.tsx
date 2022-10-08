@@ -4,10 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { Show } from "../../types/types";
 import { useTvMazeContext } from "../../hooks/useGlobalContext";
 import Card from "../shared/card";
+import Loading from "../shared/Loading";
 
 const Home = () => {
     const [query, setQuery] = useState<string>("");
-    const { search, setSelectedShow, shows, resetShows } = useTvMazeContext();
+    const { search, setSelectedShow, shows, resetShows, isLoading } =
+        useTvMazeContext();
     const { debounce } = useDebounce(query, 500);
     const navigate = useNavigate();
     const [selectedIndex, setSelectedIndex] = useState<number>(0);
@@ -70,6 +72,8 @@ const Home = () => {
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyboardNavigation}
             />
+
+            <Loading isLoading={isLoading} className="loader" />
 
             <div className="results">
                 {shows?.map((show, index) => {
