@@ -52,6 +52,11 @@ html {
 .favorite-button {
     color: #f65857;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.favorite-button:hover {
+    transform: scale(1.1);
 }
 
 /* HOME  */
