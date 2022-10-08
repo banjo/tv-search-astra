@@ -1,5 +1,5 @@
+import { cleanString } from "../../helpers/util";
 import { Show } from "../../types/types";
-import DOMPurify from "dompurify";
 interface CardProps {
     show: Show;
     selected: boolean;
@@ -8,10 +8,6 @@ interface CardProps {
 }
 
 const Card = ({ show, onClick, selected = false, refName }: CardProps) => {
-    const cleanString = (str: string) => {
-        return DOMPurify.sanitize(str);
-    };
-
     return (
         <div
             className={`card ${selected ? "selected-card" : ""}`}
@@ -26,7 +22,9 @@ const Card = ({ show, onClick, selected = false, refName }: CardProps) => {
             <div className="card-content">
                 <h3 className="title">
                     {show.name}{" "}
-                    <span className="year">({show.premiered.slice(0, 4)})</span>
+                    <span className="year">
+                        ({show.premiered?.slice(0, 4) ?? "No start date"})
+                    </span>
                 </h3>
                 <div className="summary">
                     <div

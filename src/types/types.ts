@@ -12,8 +12,8 @@ export interface Show {
     status: string;
     runtime: number;
     averageRuntime: number;
-    premiered: string;
-    ended: string;
+    premiered: string | null;
+    ended: string | null;
     officialSite: string;
     schedule: {
         time: string;
