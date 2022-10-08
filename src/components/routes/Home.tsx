@@ -36,19 +36,25 @@ const Home = () => {
         let newValue = 0;
 
         if (e.key === "ArrowUp") {
+            e.preventDefault();
             newValue = (selectedIndex - 1 + shows.length) % shows.length;
             setSelectedIndex(newValue);
         }
 
-        if (e.key === "ArrowDown") {
+        if (e.key === "ArrowDown" || e.key === "Tab") {
+            e.preventDefault();
             newValue = selectedIndex + (1 % shows.length);
             setSelectedIndex(newValue);
         }
 
         const ref = refs[newValue];
-        ref?.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+        ref?.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+        });
 
         if (e.key === "Enter") {
+            e.preventDefault();
             handleClick(shows[selectedIndex]);
         }
     };
@@ -62,7 +68,7 @@ const Home = () => {
                 value={query}
                 placeholder="Friends..."
                 onChange={(e) => setQuery(e.target.value)}
-                onKeyUp={handleKeyboardNavigation}
+                onKeyDown={handleKeyboardNavigation}
             />
 
             <div className="results">
