@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { useTvMazeContext } from "../../hooks/useGlobalContext";
+import Boop from "./Boop";
 
 interface Props {
     showId: number;
@@ -25,13 +26,21 @@ const FavoriteButton = ({ showId }: Props) => {
     };
 
     return (
-        <div
-            className="favorite-button"
-            onClick={onClick}
-            title={isFavorited ? "Remove from favorites" : "Add to favorites"}
-        >
-            {isFavorited ? <MdFavorite /> : <MdFavoriteBorder />}
-        </div>
+        <>
+            <Boop config={{ rotation: 10 }}>
+                <div
+                    className="favorite-button"
+                    onClick={onClick}
+                    title={
+                        isFavorited
+                            ? "Remove from favorites"
+                            : "Add to favorites"
+                    }
+                >
+                    {isFavorited ? <MdFavorite /> : <MdFavoriteBorder />}
+                </div>
+            </Boop>
+        </>
     );
 };
 

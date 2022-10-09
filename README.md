@@ -34,6 +34,7 @@ pnpm run preview
 - Page navigation with React Router which allows for shareable links.
 - Add / remove favorites from card and show page
 - Page for favorites
+- Spring animations on hoverable elements for a more dynamic UI.
 
 ## What I would do if I had more time
 
