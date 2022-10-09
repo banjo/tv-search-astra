@@ -6,6 +6,7 @@ import { BsStarFill } from "react-icons/bs";
 import { FaImdb } from "react-icons/fa";
 import { useSearchParams } from "react-router-dom";
 import FavoriteButton from "../shared/FavoriteButton";
+import Boop from "../shared/Boop";
 
 const Show = () => {
     const { selectedShow, findShowById } = useTvMazeContext();
@@ -98,13 +99,15 @@ const Show = () => {
 
                         <div className="links">
                             {selectedShow.externals?.imdb && (
-                                <a
-                                    href={`https://www.imdb.com/title/${selectedShow.externals.imdb}/`}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    <FaImdb />
-                                </a>
+                                <Boop config={{ scale: 1.08 }}>
+                                    <a
+                                        href={`https://www.imdb.com/title/${selectedShow.externals.imdb}/`}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        <FaImdb />
+                                    </a>
+                                </Boop>
                             )}
                         </div>
                     </div>
