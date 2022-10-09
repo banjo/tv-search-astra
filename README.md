@@ -1,6 +1,6 @@
 # TV Series Search for AstraZeneca
 
-This is the home assignment for AstraZeneca.
+This is the home assignment for AstraZeneca. A demo can be accessed [here](https://tv.banjoanton.com).
 
 ## Run
 
