@@ -185,6 +185,8 @@ html {
     flex-wrap: wrap;
     align-items: center;
     gap: 8px;
+    height: 30px;
+    overflow: hidden;
 }
 
 .genres > .genre {
