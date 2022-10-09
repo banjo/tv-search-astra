@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Show, TVMazeSearchResult } from "../types/types";
 import { Error as IError } from "../types/types";
 
-const URL = "http://api.tvmaze.com";
+const URL = "https://api.tvmaze.com";
 
 export const useTvMaze = () => {
     const idCache = useRef<{ [id: number]: Show }>({});
