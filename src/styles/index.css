@@ -65,7 +65,7 @@ html {
     margin-bottom: 32px;
     align-items: center;
     flex-direction: column;
-    max-width: var(--max-width);
+    max-width: calc(var(--max-width));
     margin: 0 auto;
 }
 
@@ -80,7 +80,8 @@ html {
 }
 
 #search-input {
-    width: 100%;
+    width: 90%;
+    max-width: 600px;
     margin: 16px 0;
     font-size: 1.2rem;
     border-style: none;
@@ -112,7 +113,7 @@ html {
 /* CARD  */
 .card {
     color: #fff;
-    width: 100%;
+    max-width: 800px;
     height: 147.5px;
     background-color: var(--clr-white);
     color: var(--clr-dark);
@@ -176,7 +177,7 @@ html {
 }
 
 .card-content .bottom .favorite-button {
-    margin-right: 16px;
+    margin-right: 8px;
     font-size: 1.4rem;
 }
 
@@ -196,6 +197,11 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.card-content .genres {
+    height: 30px;
+    overflow: hidden;
 }
 
 .missing-image {
