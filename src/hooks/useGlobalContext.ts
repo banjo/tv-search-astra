@@ -4,16 +4,16 @@ import { Show } from "../types/types";
 export interface GlobalContextInterface {
     selectedShow: Show | null;
     setSelectedShow: Dispatch<SetStateAction<Show | null>>;
-    search: (query: string) => Promise<void>;
+    search: (query: string, signal: AbortSignal) => Promise<void>;
     shows: Show[];
     resetShows: () => void;
-    findShowById: (id: number) => Promise<void>;
+    findShowById: (id: number, signal: AbortSignal) => Promise<void>;
     clearError: () => void;
     isLoading: boolean;
     favorites: number[];
     addFavorite: (favorite: number) => void;
     removeFavorite: (favorite: number) => void;
-    findFavorites: (ids: number[]) => Promise<void>;
+    findFavorites: (ids: number[], signal: AbortSignal) => Promise<void>;
     favoriteShows: Show[];
 }
 

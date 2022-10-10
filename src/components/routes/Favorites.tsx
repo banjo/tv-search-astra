@@ -10,11 +10,16 @@ const Favorites = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchData = async () => {
-            await findFavorites(favorites);
+        const abortController = new AbortController();
+        const fetchData = async (signal: AbortSignal) => {
+            await findFavorites(favorites, signal);
         };
 
-        fetchData();
+        fetchData(abortController.signal);
+
+        return () => {
+            abortController.abort();
+        };
     }, [favorites]);
 
     const handleClick = (show: Show) => {

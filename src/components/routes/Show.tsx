@@ -19,12 +19,15 @@ const Show = () => {
         if (!isNumber(Number(id))) {
             navigate("/");
         }
-        const fetchShow = async (id: number) => {
-            await findShowById(id);
+
+        const abortController = new AbortController();
+
+        const fetchShow = async (id: number, signal: AbortSignal) => {
+            await findShowById(id, signal);
         };
 
         if (!selectedShow) {
-            fetchShow(Number(id));
+            fetchShow(Number(id), abortController.signal);
         }
     }, [selectedShow, id]);
 

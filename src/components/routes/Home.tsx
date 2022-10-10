@@ -31,12 +31,17 @@ const Home = () => {
             resetShows();
             return;
         }
+        const abortController = new AbortController();
 
-        const fetchData = async (query: string) => {
-            await search(query);
+        const fetchData = async (query: string, signal: AbortSignal) => {
+            await search(query, signal);
         };
 
-        fetchData(debounce);
+        fetchData(debounce, abortController.signal);
+
+        return () => {
+            abortController.abort();
+        };
     }, [debounce]);
 
     const handleClick = async (show: Show) => {
