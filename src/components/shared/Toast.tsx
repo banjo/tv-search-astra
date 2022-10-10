@@ -8,12 +8,17 @@ const Toast = ({ message, type }: IError) => {
     const { clearError } = useTvMazeContext();
 
     useEffect(() => {
+        let ignore = false;
         if (message) {
             setShowToast(true);
             setTimeout(() => {
-                close();
+                if (!ignore) close();
             }, TIMEOUT);
         }
+
+        return () => {
+            ignore = true;
+        };
     }, [message]);
 
     const close = () => {
