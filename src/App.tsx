@@ -22,7 +22,7 @@ const App = () => {
         setError,
         isLoading,
         findFavorites,
-        favoriteShows
+        favoriteShows,
     } = useTvMaze();
 
     const { addFavorite, removeFavorite, favorites } = useFavorites();
@@ -67,7 +67,9 @@ const App = () => {
                         <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
                 </BrowserRouter>
-                <Toast message={error?.message} type={error?.type} />
+                <div className="toast-wrapper">
+                    <Toast message={error?.message} type={error?.type} />
+                </div>
             </GlobalContext.Provider>
             <img src={url} alt="" className="hidden" onLoad={handleLoad} />
         </div>
