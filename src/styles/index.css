@@ -228,6 +228,21 @@ html {
     font-size: 3rem;
 }
 
+.show-container .top {
+    display: flex;
+    flex-direction: row;
+    margin-top: 16px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.show-container .title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--clr-primary);
+}
+
 .show-view {
     display: flex;
     flex-direction: row;
@@ -236,21 +251,6 @@ html {
 
 .show-view .side {
     flex: 0 0 35%;
-}
-
-.show-view .side .top {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-}
-
-.show-view .side .title {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--clr-primary);
 }
 
 .show-view .side img {
@@ -322,6 +322,14 @@ html {
 
     .show-view > .main .info {
         margin-top: 32px;
+    }
+
+    .show-container .title {
+        font-size: 1.5rem;
+    }
+
+    .show-container .favorite-button {
+        font-size: 2rem;
     }
 }
 

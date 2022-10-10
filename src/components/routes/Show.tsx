@@ -57,12 +57,12 @@ const Show = () => {
             <Link className="btn" to={goBackLink()}>
                 Back
             </Link>
+            <div className="top">
+                <div className="title">{selectedShow.name}</div>
+                <FavoriteButton showId={selectedShow.id} />
+            </div>
             <div className="show-view">
                 <div className="side">
-                    <div className="top">
-                        <div className="title">{selectedShow.name}</div>
-                        <FavoriteButton showId={selectedShow.id} />
-                    </div>
                     <div className="info">
                         <div>
                             {selectedShow.premiered?.slice(0, 4) ??

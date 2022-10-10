@@ -42,4 +42,5 @@ pnpm run preview
 - Tests. A lot of tests could've been added, due to the limited time I choose to spend my time on functionality and design instead of tests. Even though both components, helpers and hooks should've been tested.
 - Create a separate hook/state for error instead of including it in the useTvMaze hook as it is more global than that.
 - Re-work the state system. The current one works, but it scales quite messy. If I had time I would probably re-work it to use useReducer or Redux or some other neat framework.
+- Re-work CSS structure, preferably to a component-based one.
 - Re-write the application to Svelte ;)
