@@ -37,6 +37,7 @@ const Home = () => {
             await search(query, signal);
         };
 
+        resetShows();
         fetchData(debounce, abortController.signal);
 
         return () => {
