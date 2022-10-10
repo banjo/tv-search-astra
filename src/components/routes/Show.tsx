@@ -75,8 +75,10 @@ const Show = () => {
                         )}
                     </div>
 
-                    {selectedShow.image && (
+                    {selectedShow.image ? (
                         <img src={selectedShow.image.original} alt="" />
+                    ) : (
+                        <div className="missing-image">No image :(</div>
                     )}
                 </div>
                 <div className="main">

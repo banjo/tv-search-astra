@@ -198,6 +198,8 @@ html {
 
 .missing-image {
     height: 100%;
+    max-height: 290px;
+    max-width: 80%;
     aspect-ratio: 105 / 147.5;
     background-color: var(--clr-primary);
     display: flex;
@@ -224,7 +226,6 @@ html {
 
 .show-container .favorite-button {
     font-size: 3rem;
-    margin-left: auto;
 }
 
 .show-view {
@@ -234,12 +235,13 @@ html {
 }
 
 .show-view .side {
-    flex: 0 0 30%;
+    flex: 0 0 35%;
 }
 
 .show-view .side .top {
     display: flex;
     flex-direction: row;
+    gap: 16px;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
@@ -263,7 +265,7 @@ html {
 }
 
 .show-view > .main {
-    flex: 0 0 70%;
+    flex: 0 0 65%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
