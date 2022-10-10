@@ -7,6 +7,7 @@ import Card from "../shared/Card";
 import Loading from "../shared/Loading";
 
 const Home = () => {
+    const [hasFetched, setHasFetched] = useState(false);
     const [query, setQuery] = useState<string>("");
     const { search, setSelectedShow, shows, resetShows, isLoading } =
         useTvMazeContext();
@@ -34,7 +35,9 @@ const Home = () => {
         const abortController = new AbortController();
 
         const fetchData = async (query: string, signal: AbortSignal) => {
+            setHasFetched(false);
             await search(query, signal);
+            setHasFetched(true);
         };
 
         resetShows();
@@ -42,6 +45,7 @@ const Home = () => {
 
         return () => {
             abortController.abort();
+            setHasFetched(false);
         };
     }, [debounce]);
 
@@ -78,6 +82,10 @@ const Home = () => {
         }
     };
 
+    const noResults = () => {
+        return shows.length === 0 && hasFetched && !isLoading;
+    };
+
     return (
         <div className="search-container">
             <h1 className="title">TV Series</h1>
@@ -97,6 +105,8 @@ const Home = () => {
             />
 
             <Loading isLoading={isLoading} className="loader" />
+
+            {noResults() && <div>No shows found</div>}
 
             <div className="results">
                 {shows?.map((show, index) => {
