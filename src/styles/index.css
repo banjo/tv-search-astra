@@ -107,8 +107,8 @@ html {
 
 /* CARD  */
 .card {
-    color: #fff;
     max-width: 650px;
+    width: 100%;
     height: 147.5px;
     background-color: var(--clr-white);
     color: var(--clr-dark);
@@ -164,6 +164,7 @@ html {
     text-overflow: ellipsis;
     overflow: hidden;
     margin-bottom: 8px;
+    height: 48px;
 }
 
 .card-content .bottom {
