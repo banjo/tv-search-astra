@@ -29,15 +29,17 @@ const Toast = ({ message, type }: IError) => {
     };
 
     return (
-        <div
-            className={`toast-container
+        <div className="toast-wrapper">
+            <div
+                className={`toast-container
             ${type}
             ${showToast ? "" : "hidden-toast"}`}
-        >
-            <div className="title">{type?.toUpperCase()}</div>
-            <div className="message">{message}</div>
-            <div className="close" onClick={close}>
-                X
+            >
+                <div className="title">{type?.toUpperCase()}</div>
+                <div className="message">{message}</div>
+                <div className="close" onClick={close}>
+                    X
+                </div>
             </div>
         </div>
     );

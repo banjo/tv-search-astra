@@ -28,9 +28,7 @@ const App = () => {
                         <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
                 </BrowserRouter>
-                <div className="toast-wrapper">
-                    <Toast message={error?.message} type={error?.type} />
-                </div>
+                <Toast message={error?.message} type={error?.type} />
             </GlobalContext.Provider>
             <SpeedTest setError={setError} />
         </div>
