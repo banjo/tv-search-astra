@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
-import { useTvMazeContext } from "../../hooks/useGlobalContext";
-import Boop from "./Boop";
+import { useTvMazeContext } from "../../../hooks/useGlobalContext";
+import Boop from "../Boop/Boop";
 
 interface Props {
     showId: number;

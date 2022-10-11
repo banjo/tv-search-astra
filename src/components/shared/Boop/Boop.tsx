@@ -1,5 +1,5 @@
 import { animated } from "react-spring";
-import useBoop, { BoopConfig } from "../../hooks/useBoop";
+import useBoop, { BoopConfig } from "../../../hooks/useBoop";
 
 interface Props {
     children: JSX.Element[] | JSX.Element;

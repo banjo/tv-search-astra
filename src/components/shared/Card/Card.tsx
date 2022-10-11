@@ -1,6 +1,8 @@
-import { cleanString } from "../../helpers/util";
-import { Show } from "../../types/types";
-import FavoriteButton from "./FavoriteButton";
+import { cleanString } from "../../../helpers/util";
+import { Show } from "../../../types/types";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import "./card.css";
+
 interface CardProps {
     show: Show;
     selected?: boolean;

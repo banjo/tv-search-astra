@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Favorites from "./components/routes/Favorites";
 import Home from "./components/routes/Home";
 import Show from "./components/routes/Show";
-import Toast from "./components/shared/Toast";
+import Toast from "./components/shared/Toast/Toast";
 import useFavorites from "./hooks/useFavorites";
 import { GlobalContext } from "./hooks/useGlobalContext";
 import { useInternetSpeedTest } from "./hooks/useInternetSpeedTest";

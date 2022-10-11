@@ -1,3 +1,5 @@
+import "./loading.css";
+
 interface Props {
     isLoading: boolean;
     className?: string;

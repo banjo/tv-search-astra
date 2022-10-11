@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { useTvMazeContext } from "../../hooks/useGlobalContext";
-import { Error as IError } from "../../types/types";
+import { useTvMazeContext } from "../../../hooks/useGlobalContext";
+import { Error as IError } from "../../../types/types";
+import "./toast.css";
+
 const TIMEOUT = 5000;
 
 const Toast = ({ message, type }: IError) => {

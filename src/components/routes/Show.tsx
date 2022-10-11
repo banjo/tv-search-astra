@@ -5,8 +5,8 @@ import { useTvMazeContext } from "../../hooks/useGlobalContext";
 import { BsStarFill } from "react-icons/bs";
 import { FaImdb } from "react-icons/fa";
 import { useSearchParams } from "react-router-dom";
-import FavoriteButton from "../shared/FavoriteButton";
-import Boop from "../shared/Boop";
+import FavoriteButton from "../shared/FavoriteButton/FavoriteButton";
+import Boop from "../shared/Boop/Boop";
 
 const Show = () => {
     const { selectedShow, findShowById } = useTvMazeContext();

@@ -1,0 +1,43 @@
+.toast-wrapper {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.toast-container {
+    width: 330px;
+    position: relative;
+    right: 16px;
+    bottom: 16px;
+    justify-content: start;
+    transition: transform 0.4s ease-in-out;
+    padding: 16px;
+    transform: translateX(0);
+}
+
+.toast-container > .title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.toast-container > .close {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    cursor: pointer;
+}
+
+.error {
+    background-color: #f8d7d9;
+    color: #721c24;
+}
+
+.warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.hidden-toast {
+    transform: translateX(200%);
+}

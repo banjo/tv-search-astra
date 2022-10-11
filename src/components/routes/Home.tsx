@@ -3,8 +3,8 @@ import { useDebounce } from "../../hooks/useDebounce";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Show } from "../../types/types";
 import { useTvMazeContext } from "../../hooks/useGlobalContext";
-import Card from "../shared/Card";
-import Loading from "../shared/Loading";
+import Card from "../shared/Card/Card";
+import Loading from "../shared/Loading/Loading";
 
 const Home = () => {
     const [hasFetched, setHasFetched] = useState(false);

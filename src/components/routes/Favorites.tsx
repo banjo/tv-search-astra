@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTvMazeContext } from "../../hooks/useGlobalContext";
 import { Show } from "../../types/types";
-import Card from "../shared/Card";
+import Card from "../shared/Card/Card";
 
 const Favorites = () => {
     const { favorites, findFavorites, favoriteShows, setSelectedShow } =
