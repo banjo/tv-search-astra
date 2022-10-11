@@ -53,13 +53,13 @@ const Home = () => {
             setShowResults(true);
         };
 
-        resetShows();
         fetchData(debounce, abortController.signal);
 
         return () => {
             abortController.abort();
             setHasFetched(false);
             setShowResults(false);
+            resetShows();
         };
     }, [debounce]);
 
