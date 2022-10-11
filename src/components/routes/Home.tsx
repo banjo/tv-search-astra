@@ -17,6 +17,7 @@ const Home = () => {
     const refs = shows.map(() => createRef<HTMLDivElement>());
     const [searchParams] = useSearchParams();
     const searchElement = createRef<HTMLInputElement>();
+    const [showResults, setShowResults] = useState<boolean>(false);
 
     useEffect(() => {
         const query = searchParams.get("query");
@@ -32,12 +33,13 @@ const Home = () => {
             resetShows();
             return;
         }
+
         const abortController = new AbortController();
 
         const fetchData = async (query: string, signal: AbortSignal) => {
-            setHasFetched(false);
             await search(query, signal);
             setHasFetched(true);
+            setShowResults(true);
         };
 
         resetShows();
@@ -46,6 +48,7 @@ const Home = () => {
         return () => {
             abortController.abort();
             setHasFetched(false);
+            setShowResults(false);
         };
     }, [debounce]);
 
@@ -108,7 +111,11 @@ const Home = () => {
 
             {noResults() && <div>No shows found</div>}
 
-            <div className="results">
+            <div
+                className={`results ${
+                    showResults && !isLoading ? "" : "hidden-results"
+                }`}
+            >
                 {shows?.map((show, index) => {
                     return (
                         <Card
