@@ -5,13 +5,14 @@ import { Error as IError } from "../types/types";
 
 const URL = "https://api.tvmaze.com";
 
-export const useTvMaze = () => {
+export const useTvMaze = (
+    setError: React.Dispatch<React.SetStateAction<IError | null>>
+) => {
     const idCache = useRef<{ [id: number]: Show }>({});
     const queryCache = useRef<{ [query: string]: Show[] }>({});
     const [shows, setShows] = useState<Show[]>([]);
     const [selectedShow, setSelectedShow] = useState<Show | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [error, setError] = useState<IError | null>(null);
     const [favoriteShows, setFavoriteShows] = useState<Show[]>([]);
 
     const findShowById = async (id: number, signal: AbortSignal) => {
@@ -117,7 +118,6 @@ export const useTvMaze = () => {
     };
 
     return {
-        error,
         isLoading,
         setSelectedShow,
         selectedShow,
@@ -126,7 +126,6 @@ export const useTvMaze = () => {
         resetShows,
         findShowById,
         clearError,
-        setError,
         findFavorites,
         favoriteShows,
     };

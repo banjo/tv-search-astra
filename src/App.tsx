@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Favorites from "./components/routes/Favorites";
 import Home from "./components/routes/Home";
@@ -8,28 +8,18 @@ import useFavorites from "./hooks/useFavorites";
 import { GlobalContext } from "./hooks/useGlobalContext";
 import { useInternetSpeedTest } from "./hooks/useInternetSpeedTest";
 import { useTvMaze } from "./hooks/useTvMaze";
+import { Error as IError } from "./types/types";
 
 const App = () => {
-    const {
-        search,
-        selectedShow,
-        shows,
-        setSelectedShow,
-        resetShows,
-        findShowById,
-        error,
-        clearError,
-        setError,
-        isLoading,
-        findFavorites,
-        favoriteShows,
-    } = useTvMaze();
-
-    const { addFavorite, removeFavorite, favorites } = useFavorites();
+    const [error, setError] = useState<IError | null>(null);
+    const tvMazeContext = useTvMaze(setError);
+    const favorites = useFavorites();
 
     const { url, handleLoad, result } = useInternetSpeedTest({
         threshold: 1000,
     });
+
+    const context = { ...tvMazeContext, ...favorites };
 
     useEffect(() => {
         if (result === "slow") {
@@ -42,23 +32,7 @@ const App = () => {
 
     return (
         <div className="app">
-            <GlobalContext.Provider
-                value={{
-                    search,
-                    selectedShow,
-                    shows,
-                    setSelectedShow,
-                    resetShows,
-                    findShowById,
-                    clearError,
-                    isLoading,
-                    favorites,
-                    removeFavorite,
-                    addFavorite,
-                    findFavorites,
-                    favoriteShows,
-                }}
-            >
+            <GlobalContext.Provider value={context}>
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Home />} />
