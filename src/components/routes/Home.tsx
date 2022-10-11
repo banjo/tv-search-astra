@@ -5,6 +5,7 @@ import { Show } from "../../types/types";
 import { useTvMazeContext } from "../../hooks/useGlobalContext";
 import Card from "../shared/Card/Card";
 import Loading from "../shared/Loading/Loading";
+import { useKeyboardNavigation } from "../../hooks/useKeyboardNavigation";
 
 const Home = () => {
     const [hasFetched, setHasFetched] = useState(false);
@@ -13,11 +14,21 @@ const Home = () => {
         useTvMazeContext();
     const { debounce, setDirectly } = useDebounce(query, 500);
     const navigate = useNavigate();
-    const [selectedIndex, setSelectedIndex] = useState<number>(0);
-    const refs = shows.map(() => createRef<HTMLDivElement>());
     const [searchParams] = useSearchParams();
     const searchElement = createRef<HTMLInputElement>();
     const [showResults, setShowResults] = useState<boolean>(false);
+
+    const handleClick = async (show: Show) => {
+        setSelectedShow(show);
+        resetShows();
+        navigate(`/show/${show.id}?query=${query}&from=home`);
+    };
+
+    const { refs, handleKeyboardNavigation, selectedIndex } =
+        useKeyboardNavigation<Show>({
+            itemsToNavigate: shows,
+            handleClick: handleClick,
+        });
 
     useEffect(() => {
         const query = searchParams.get("query");
@@ -51,39 +62,6 @@ const Home = () => {
             setShowResults(false);
         };
     }, [debounce]);
-
-    const handleClick = async (show: Show) => {
-        setSelectedShow(show);
-        resetShows();
-        navigate(`/show/${show.id}?query=${query}&from=home`);
-    };
-
-    const handleKeyboardNavigation = (e: React.KeyboardEvent) => {
-        let newValue = 0;
-
-        if (e.key === "ArrowUp") {
-            e.preventDefault();
-            newValue = (selectedIndex - 1 + shows.length) % shows.length;
-            setSelectedIndex(newValue);
-        }
-
-        if (e.key === "ArrowDown" || e.key === "Tab") {
-            e.preventDefault();
-            newValue = (selectedIndex + 1) % shows.length;
-            setSelectedIndex(newValue);
-        }
-
-        const ref = refs[newValue];
-        ref?.current?.scrollIntoView({
-            behavior: "smooth",
-            block: "nearest",
-        });
-
-        if (e.key === "Enter") {
-            e.preventDefault();
-            handleClick(shows[selectedIndex]);
-        }
-    };
 
     const noResults = () => {
         return shows.length === 0 && hasFetched && !isLoading;
