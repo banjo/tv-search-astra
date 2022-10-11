@@ -2,7 +2,7 @@
 :root {
     --clr-background: #f5f5f5;
     --clr-white: rgb(244, 244, 244);
-    --clr-gray: rgb(212, 219, 219);
+    --clr-gray: rgb(231, 234, 234);
     --clr-primary: #2c3e50;
     --clr-dark: #1a1a1a;
     --clr-secondary: #2ecc71;
@@ -136,6 +136,11 @@ html {
     transform: scale(1.01);
     background-color: var(--clr-gray);
     box-shadow: var(--box-shadow-lg);
+}
+
+.card:hover .card-content,
+.selected-card .card-content {
+    background-color: var(--clr-gray);
 }
 
 .card > img {
