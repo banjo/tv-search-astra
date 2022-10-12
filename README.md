@@ -24,7 +24,7 @@ pnpm run preview
 
 - Search input with debounce effect of 500ms for a smoother experience.
 - Keyboard navigation once the result has been presented.
-- Entry animation the result
+- Entry animation for the result
 - Request caching, which will save and re-use repeated requests.
 - Error toast with animations (search for "error" to trigger an example).
 - Warning toast with animation for slow internet connection.
@@ -36,6 +36,19 @@ pnpm run preview
 - Add / remove favorites from card and show page.
 - Page for favorites.
 - Spring animations on hoverable elements for a more dynamic UI.
+
+## Technologies
+
+- React with TypeScript
+- React Router for client routing
+- react-spring for a simple hover effect with spring physics
+- localStorage to save and maintain favorites
+- react-icons for icons
+- DOMPurify for string sanitation
+- ESLint for linting
+- Prettier for formatting
+- Vite as developer environment (dev server, build, typescript, etc)
+- pnpm as a package manager
 
 ## What I would do if I had more time
 
